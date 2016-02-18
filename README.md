@@ -14,10 +14,9 @@ Driver      :JDBC (Jave to MySQL)
 - This Web Service is tested using Postman chrome application    https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en
 - RestApis.java contains APIs (Create Claim, Read Claim, Get Claim by Loss Date range, Delete Claim, Get specific vehicle details)
 
-3. Possible Optimizations (To be implemented)
+3.Possible Optimizations (To be implemented)
 
 - Establish mySql table relations for better querying efficiency
 - Improvise Links to individual URIs
 - Better, more comprehensible Exception Handling
 - Implement Authorization Service for restricted access (Tokens)
-
