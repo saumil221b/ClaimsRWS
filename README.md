@@ -16,7 +16,7 @@ Driver      :JDBC (Jave to MySQL)
 
 3.Possible Optimizations (To be implemented)
 
-- Establish mySql table relations for better querying efficiency
+- Establish mySql table relations and normalization for better querying efficiency
 - Improvise Links to individual URIs
 - Better, more comprehensible Exception Handling
 - Implement Authorization Service for restricted access (Tokens)
