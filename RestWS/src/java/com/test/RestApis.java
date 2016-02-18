@@ -11,6 +11,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.POST;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
@@ -42,7 +43,7 @@ public class RestApis {
     @GET
     @Path("/read/vehicle")
     @Produces({MediaType.APPLICATION_XML})
-    public String getVehicleDetails(@QueryParam("ClaimNumber") String claimNumber, @QueryParam("Vin") String vin ) {
+    public String getVehicleDetails(@QueryParam("ClaimNumber") String claimNumber,@DefaultValue("1M8GDM9AXKP042788")@QueryParam("Vin") String vin ) {
         return c.readVehicleDetails(claimNumber, vin);
     }
     
@@ -57,7 +58,30 @@ public class RestApis {
             return Response.status(400).entity(e.getMessage()).build();
         }
         return Response.status(200).entity("Deleted successfully").build();
-}
+    }
+    
+    @POST
+    @Path("/update")
+    @Consumes("application/xml")
+    public Response updateClaim(InputStream incomingData) {
+        StringBuilder stringBuilder = new StringBuilder();
+        String s1 = null;
+        try {
+            // Just to check
+            BufferedReader in = new BufferedReader(new InputStreamReader(incomingData));
+            String line = null;
+            while ((line = in.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+             s1 = um.updateClaim(stringBuilder.toString());
+        } catch (Exception e) {
+            System.out.println(e.getMessage()+"Error Parsing: - ");
+        }
+        System.out.println("Data Received: " + stringBuilder.toString());
+
+        return Response.status(200).entity(s1).build();
+    }
+
 
     // 1. Task to create a new claim
     @POST
@@ -72,7 +96,7 @@ public class RestApis {
             while ((line = in.readLine()) != null) {
                 stringBuilder.append(line);
             }
-            um.unmarshall(stringBuilder.toString());
+            um.createClaim(stringBuilder.toString());
         } catch (Exception e) {
             System.out.println(e.getMessage()+"Error Parsing: - ");
         }
