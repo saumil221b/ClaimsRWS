@@ -12,7 +12,7 @@ Web Service which performs CRUD operations
 2.Note
 
 - This Web Service is tested using Postman chrome application    https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en
-- RestApis.java contains APIs (Create Claim, Read Claim, Get Claim by Loss Date range, Delete Claim, Get specific vehicle details)
+- RestApis.java contains all required and optional APIs 
 
 3.Possible Optimizations (To be implemented)
 
