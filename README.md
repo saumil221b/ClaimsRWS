@@ -1,7 +1,7 @@
 # ClaimsRWS
 Web Service which performs CRUD operations
 
-1.Technologies Used:
+1.Technologies Used
 
 Platform    :Java (NetBeans IDE)
 Web Service :RESTful Web Service
