@@ -3,11 +3,11 @@ Web Service which performs CRUD operations
 
 1.Technologies Used
 
-Platform    :Java (NetBeans IDE)
-Web Service :RESTful Web Service
-Libraries   :JAXB, Jersey (JAX-RS API)
-Database    :MySQL
-Driver      :JDBC (Jave to MySQL)
+- Platform    :Java (NetBeans IDE)
+- Web Service :RESTful Web Service
+- Libraries   :JAXB, Jersey (JAX-RS API)
+- Database    :MySQL
+- Driver      :JDBC (Jave to MySQL)
 
 2.Note
 
