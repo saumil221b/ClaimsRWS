@@ -2,8 +2,7 @@ package com.test;
 
 /* @author
     Saumil jagirdar
-    *Imp - Dont use java.sql.Date - otherwise error
-
+    Note - Dont use java.sql.Date
 */
 import java.util.Date;
 import java.sql.Timestamp;
