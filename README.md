@@ -1,4 +1,4 @@
-# ClaimsRWS
+#ClaimsRWS
 Web Service which performs CRUD operations
 
 1.Technologies Used
@@ -11,12 +11,12 @@ Web Service which performs CRUD operations
 
 2.Note
 
-- This Web Service is tested using Postman chrome application    https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en
+- This Web Service is tested using Postman chrome application          https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en
 - RestApis.java contains all required and optional APIs 
 
-3.Possible Optimizations (To be implemented)
+3.Possible Optimizations
 
 - Establish mySql table relations and normalization for better querying efficiency
 - Improvise Links to individual URIs
 - Better, more comprehensible Exception Handling
-- Implement Authorization Service for restricted access (Tokens)
+- Implement Authorization Service for restricted access
