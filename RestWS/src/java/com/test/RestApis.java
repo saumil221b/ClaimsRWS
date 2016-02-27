@@ -24,7 +24,7 @@ public class RestApis {
     createQueries c = new createQueries();
     Connections d = new Connections();
 
-    //3. Task to search claim by loss date range
+    // Search claim by loss date range
     @GET
     @Path("/read/bylossdate")
     @Produces({MediaType.APPLICATION_XML})
@@ -32,7 +32,7 @@ public class RestApis {
         return c.readClaimByLossDate(startDate, endDate);
     }
 
-    // 2. Task to read a claim
+    // Read a claim
     @GET
     @Path("/read")
     @Produces({MediaType.APPLICATION_XML})
@@ -40,6 +40,7 @@ public class RestApis {
         return c.readClaim(claimNumber);
     }
     
+    // Read Vehicle Claim
     @GET
     @Path("/read/vehicle")
     @Produces({MediaType.APPLICATION_XML})
@@ -47,6 +48,7 @@ public class RestApis {
         return c.readVehicleDetails(claimNumber, vin);
     }
     
+    // Delete Claim
     @DELETE @Path("/delete")
     @Produces({MediaType.TEXT_HTML})
     public Response deletePodcastById(@QueryParam("ClaimNumber") String claimNumber) {
@@ -60,6 +62,7 @@ public class RestApis {
         return Response.status(200).entity("Deleted successfully").build();
     }
     
+    // Update Claim
     @POST
     @Path("/update")
     @Consumes("application/xml")
@@ -83,7 +86,7 @@ public class RestApis {
     }
 
 
-    // 1. Task to create a new claim
+    // Create new claim
     @POST
     @Path("/create")
     @Consumes("application/xml")
@@ -135,61 +138,3 @@ class Connections {
         }
     }
 }
-
-//    @XmlRootElement
-//class StringList {
-//
-//    private List<String> data;
-//
-//    public StringList() {
-//    }
-//
-//    public StringList(List<String> data) {
-//        this.data = data;
-//    }
-//
-//    public List<String> getData() {
-//        return data;
-//    }
-//
-//    public void setData(List<String> data) {
-//        this.data = data;
-//    }
-//}
-//    public List<String> CDB() {
-//
-//        createConection();
-//        
-//        try {
-//
-//            stmt = conn.createStatement();
-//
-//            String s1 = "Select content from advertisement limit 5";
-//            ResultSet result = stmt.executeQuery(s1);
-//
-//            while (result.next()) {
-//                output.add(result.getString("content"));
-//
-//            }
-//            return output;
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Connections.class.getName()).log(Level.SEVERE, null, ex);
-//        } finally {
-//
-//            try {
-//                if (stmt != null) {
-//                    conn.close();
-//                }
-//            } catch (SQLException se) {
-//                //no task
-//            }
-//            try {
-//                if (conn != null) {
-//                    conn.close();
-//                }
-//            } catch (SQLException se) {
-//            }
-//        }
-//        return null;
-//    }
-
