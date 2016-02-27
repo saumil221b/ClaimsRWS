@@ -18,8 +18,6 @@ public class xmlUnmarshall {
             newClaim claim = (newClaim) ums.unmarshal(inputSource);
             q.createClaim(claim);
             
-            //System.out.println("Vehicle vin   : " + claim.getVehicles().getVehicleDetails().getVin());
-            
         } catch (Exception e) {
             
             System.out.print(e.getMessage());
@@ -33,7 +31,6 @@ public class xmlUnmarshall {
         try {
             JAXBContext jc = JAXBContext.newInstance(newClaim.class);
             Unmarshaller ums = jc.createUnmarshaller();
-            //test file : newClaim claim = (newClaim) ums.unmarshal(new File("C:\\Users\\Saumil\\Documents\\NetBeansProjects\\Practice Qs\\RestWS\\src\\java\\com\\test\\claims.xml"));
             InputSource inputSource = new InputSource( new StringReader(s) );
             
             claim = (newClaim) ums.unmarshal(inputSource);
@@ -43,7 +40,6 @@ public class xmlUnmarshall {
             
             System.out.print(e.getMessage());
             return "In catch xml";
-            
         }  
     }
 }
