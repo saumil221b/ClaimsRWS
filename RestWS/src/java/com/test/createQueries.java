@@ -40,6 +40,7 @@ public class createQueries {
             System.out.println("Connected database successfully...");
 
         } catch (SQLException | ClassNotFoundException se) {
+            System.out.println(se.getErrorCode()+":"+se.getMessage());
         }
     }
 
@@ -92,24 +93,25 @@ public class createQueries {
                     conn.close();
                 }
             } catch (SQLException se) {
-                //no task
+                System.out.println(se.getErrorCode()+":"+se.getMessage());
             }
             try {
                 if (conn != null) {
                     conn.close();
                 }
             } catch (SQLException se) {
+                System.out.println(se.getErrorCode()+":"+se.getMessage());
             }
         }
         return null;
     }
-//   
+   
     public String readClaim(String claimNumber) {
 
         createConnection();
         StringBuilder readClaim = new StringBuilder();
         String getMitchellClaim = "Select * from mitchellclaim where ClaimNumber = '" + claimNumber + "'";
-        // create the preparedstatement before the loop
+        
         try {
             Statement preparedStmt = conn.createStatement();
             ResultSet result = preparedStmt.executeQuery(getMitchellClaim);
@@ -150,7 +152,6 @@ public class createQueries {
                     conn.close();
                 }
             } catch (SQLException se) {
-                //no task
                 System.out.println(se.getErrorCode()+":"+se.getMessage());
             }
             try {
@@ -180,7 +181,6 @@ public class createQueries {
         // declare the preparedstatement reference
         PreparedStatement preparedStmt = null;
         try {
-            // create the preparedstatement before the loop
             preparedStmt = conn.prepareStatement(insertMitchellClaim);
 
             preparedStmt.setString(1, claim.getClaimNumber());
@@ -189,16 +189,18 @@ public class createQueries {
             preparedStmt.setString(4, claim.getStatus());
             preparedStmt.setTimestamp(5, claim.getLossDate());
             preparedStmt.setLong(6, claim.getAssignedAdjusterID());
-            preparedStmt.execute();           // INSERT in MitchellClaim
-
+            preparedStmt.execute();           
+            
+            // INSERT in MitchellClaim
             preparedStmt = conn.prepareStatement(insertLossInfo);
 
             preparedStmt.setString(1, claim.getClaimNumber());
             preparedStmt.setString(2, claim.getLossinfo().getCauseOfLoss());
             preparedStmt.setTimestamp(3, claim.getLossinfo().getReportedDate());
             preparedStmt.setString(4, claim.getLossinfo().getLossDescription());
-            preparedStmt.execute();           // INSERT in LossInfo
-
+            preparedStmt.execute();   
+            
+            // INSERT in LossInfo
             preparedStmt = conn.prepareStatement(insertVehicleDetails);
 
             preparedStmt.setString(1, claim.getClaimNumber());
@@ -214,7 +216,8 @@ public class createQueries {
             preparedStmt.setInt(11, claim.getVehicles().getVehicleDetails().getMileage());
             preparedStmt.setString(12, claim.getVehicles().getVehicleDetails().getVin());
 
-            preparedStmt.execute();           // INSERT in VehicleDetails
+            // INSERT in VehicleDetails
+            preparedStmt.execute();           
 
         } catch (SQLException ex) {
             Logger.getLogger(Connections.class.getName()).log(Level.SEVERE, null, ex);
